@@ -54,6 +54,12 @@
   height: 80px;
 }
 
+/* Allow modifiable group to expand for stacked items */
+.unified-timeline .vis-group:nth-child(3) {
+  min-height: 80px;
+  height: auto;
+}
+
 .unified-timeline .vis-group:last-child {
   border-bottom: none;
 }
@@ -92,10 +98,27 @@
   font-size: 0.875rem;
   font-weight: 500;
   cursor: move;
+  border: 1px solid #d97706;
+  box-sizing: border-box;
+  margin: 1px 0;
 }
 
 .unified-timeline .vis-item.modifiable-item:hover {
   background-color: #d97706;
+  border-color: #b45309;
+  z-index: 10;
+}
+
+/* Stacked modifiable items get different opacity for visual distinction */
+.unified-timeline .vis-item.modifiable-item:not(:first-child) {
+  opacity: 0.85;
+}
+
+/* Enhance visual separation of stacked items */
+.unified-timeline .vis-item.modifiable-item.vis-selected {
+  border-color: #3b82f6;
+  border-width: 2px;
+  z-index: 20;
 }
 
 .unified-timeline .vis-item.vis-selected {
@@ -170,10 +193,28 @@
   background-color: #dc2626;
 }
 
+.timeline-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
 .keyboard-hints {
   font-size: 0.75rem;
   color: #6b7280;
   font-style: italic;
+}
+
+.stacking-info {
+  font-size: 0.75rem;
+  color: #059669;
+  font-weight: 500;
+}
+
+.info-text {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 /* Add menu */
@@ -193,6 +234,16 @@
   margin-bottom: 8px;
   padding: 4px;
   color: #374151;
+}
+
+.add-menu-info {
+  font-size: 0.75rem;
+  color: #059669;
+  margin-bottom: 8px;
+  padding: 4px;
+  background-color: #f0fdf4;
+  border-radius: 0.25rem;
+  border: 1px solid #bbf7d0;
 }
 
 .add-menu-item {

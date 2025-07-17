@@ -144,9 +144,9 @@ const UnifiedTimeline = ({
 
     // Create groups - matching the EventPanel tabs
     const groups = new DataSet([
-      { id: 0, content: 'Coded' },
-      { id: 1, content: 'Eclipse' },
-      { id: 2, content: 'Modifiable' }
+      { id: 0, content: 'Coded', stack: false },
+      { id: 1, content: 'Eclipse', stack: false },
+      { id: 2, content: 'Modifiable', stack: true, stackItems: true }
     ]);
 
     groupsDataSetRef.current = groups;
@@ -164,7 +164,8 @@ const UnifiedTimeline = ({
       zoomable: true,
       moveable: true,
       selectable: isEditingModifiable,
-      stack: false,
+      stack: true,
+      stackSubgroups: true,
       horizontalScroll: true,
       verticalScroll: false,
       zoomKey: 'ctrlKey',
@@ -360,11 +361,18 @@ const UnifiedTimeline = ({
   };
 
   const handleAddEvent = (type) => {
+    // Check if there are existing segments at this position for stacking
+    const existingAtPosition = modifiableSegments.filter(seg => {
+      const segStart = seg.start;
+      const segEnd = seg.end || seg.start;
+      return cursorPosition >= segStart && cursorPosition <= segEnd;
+    });
+    
     const newSegment = {
       id: Date.now(),
       start: cursorPosition,
       end: Math.min(100, cursorPosition + (type === 'short' ? 5 : 10)),
-      label: type === 'short' ? 'Short Segment' : 'Long Segment',
+      label: `${type === 'short' ? 'Short' : 'Long'} ${existingAtPosition.length > 0 ? `(${existingAtPosition.length + 1})` : ''}`,
       type: 'range'
     };
     
@@ -442,8 +450,15 @@ const UnifiedTimeline = ({
           </div>
         )}
 
-        <div className="keyboard-hints">
-          <span className="hint-text">Click & drag to pan • Mouse wheel to zoom • Ctrl+wheel for fine zoom</span>
+        <div className="timeline-info">
+          <div className="keyboard-hints">
+            <span className="hint-text">Click & drag to pan • Mouse wheel to zoom • Ctrl+wheel for fine zoom</span>
+          </div>
+          {isEditingModifiable && (
+            <div className="stacking-info">
+              <span className="info-text">Stacking enabled: Multiple segments can overlap</span>
+            </div>
+          )}
         </div>
       </div>
 
@@ -457,6 +472,18 @@ const UnifiedTimeline = ({
           }}
         >
           <div className="add-menu-header">Add Segment:</div>
+          {(() => {
+            const existingAtPosition = modifiableSegments.filter(seg => {
+              const segStart = seg.start;
+              const segEnd = seg.end || seg.start;
+              return cursorPosition >= segStart && cursorPosition <= segEnd;
+            });
+            return existingAtPosition.length > 0 && (
+              <div className="add-menu-info">
+                {existingAtPosition.length} segment{existingAtPosition.length > 1 ? 's' : ''} at this position
+              </div>
+            );
+          })()}
           <button onClick={() => handleAddEvent('short')} className="add-menu-item">
             Short Segment
           </button>
