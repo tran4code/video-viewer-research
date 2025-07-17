@@ -1,0 +1,8 @@
+{
+  "videos": [
+    { "id": "P1", "name": "P1", "duration": 120 },
+    { "id": "P2", "name": "P2", "duration": 120 },
+    { "id": "P3", "name": "P3", "duration": 120 },
+    { "id": "P4", "name": "P4", "duration": 120 }
+  ]
+}

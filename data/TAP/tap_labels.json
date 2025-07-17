@@ -1,0 +1,26 @@
+{
+  "P1": [
+    { "start": 5, "end": 15, "label": "SE", "color": "bg-blue-400" },
+    { "start": 20, "end": 30, "label": "SG", "color": "bg-blue-500" },
+    { "start": 40, "end": 50, "label": "CE", "color": "bg-blue-600" },
+    { "start": 70, "end": 85, "label": "EG", "color": "bg-blue-400" }
+  ],
+  "P2": [
+    { "start": 3, "end": 12, "label": "SE", "color": "bg-blue-400" },
+    { "start": 18, "end": 28, "label": "SG", "color": "bg-blue-500" },
+    { "start": 35, "end": 45, "label": "CE", "color": "bg-blue-600" },
+    { "start": 60, "end": 75, "label": "EG", "color": "bg-blue-400" }
+  ],
+  "P3": [
+    { "start": 8, "end": 18, "label": "SE", "color": "bg-blue-400" },
+    { "start": 25, "end": 35, "label": "SG", "color": "bg-blue-500" },
+    { "start": 45, "end": 55, "label": "CE", "color": "bg-blue-600" },
+    { "start": 65, "end": 80, "label": "EG", "color": "bg-blue-400" }
+  ],
+  "P4": [
+    { "start": 10, "end": 20, "label": "SE", "color": "bg-blue-400" },
+    { "start": 30, "end": 40, "label": "SG", "color": "bg-blue-500" },
+    { "start": 50, "end": 60, "label": "CE", "color": "bg-blue-600" },
+    { "start": 75, "end": 90, "label": "EG", "color": "bg-blue-400" }
+  ]
+}

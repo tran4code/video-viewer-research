@@ -1,0 +1,232 @@
+/* Clean, simple timeline CSS */
+.unified-timeline-container {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.timeline-wrapper {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.unified-timeline {
+  background-color: #f9fafb;
+  border-radius: 0.375rem;
+  border: 2px solid #3b82f6;
+  height: 300px;
+  width: 100%;
+  /* Ensure timeline remains visible and stable */
+  opacity: 1;
+  visibility: visible;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Remove vis.js default styling */
+.unified-timeline .vis-timeline {
+  border: none;
+  background-color: transparent;
+}
+
+/* Groups */
+.unified-timeline .vis-labelset .vis-label {
+  background-color: #f3f4f6;
+  border-right: 1px solid #d1d5db;
+  padding: 0 12px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.unified-timeline .vis-group {
+  border-bottom: 1px solid #e5e7eb;
+  height: 80px;
+}
+
+.unified-timeline .vis-group:last-child {
+  border-bottom: none;
+}
+
+/* Coded row items (spans) */
+.unified-timeline .vis-item.coded-item {
+  background-color: #3b82f6;
+  color: white;
+  border-radius: 4px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Eclipse row items (dots) */
+.unified-timeline .vis-item.eclipse-item {
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
+  border-radius: 50%;
+  border: none;
+}
+
+/* Modifiable row items (similar to coded but editable) */
+.unified-timeline .vis-item.modifiable-item {
+  background-color: #f59e0b;
+  color: white;
+  border-radius: 4px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: move;
+}
+
+.unified-timeline .vis-item.modifiable-item:hover {
+  background-color: #d97706;
+}
+
+.unified-timeline .vis-item.vis-selected {
+  box-shadow: 0 0 0 2px #3b82f6;
+}
+
+/* Cursor line */
+.unified-timeline .vis-custom-time {
+  background-color: #ef4444;
+  width: 2px;
+  cursor: default;
+}
+
+/* Time axis */
+.unified-timeline .vis-time-axis {
+  background-color: white;
+  border-top: 1px solid #e5e7eb;
+}
+
+.unified-timeline .vis-time-axis .vis-text {
+  color: #6b7280;
+  font-size: 11px;
+}
+
+/* Timeline footer */
+.timeline-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.edit-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.control-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.control-btn.add-btn {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.control-btn.add-btn:hover {
+  background-color: #2563eb;
+}
+
+.control-btn.delete-btn {
+  background-color: #ef4444;
+  color: white;
+}
+
+.control-btn.delete-btn:hover {
+  background-color: #dc2626;
+}
+
+.keyboard-hints {
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* Add menu */
+.add-menu {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+  z-index: 1000;
+  min-width: 150px;
+}
+
+.add-menu-header {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  padding: 4px;
+  color: #374151;
+}
+
+.add-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 6px 8px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 0.875rem;
+  text-align: left;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s;
+}
+
+.add-menu-item:hover {
+  background-color: #f3f4f6;
+}
+
+.add-menu-cancel {
+  width: 100%;
+  padding: 6px 8px;
+  margin-top: 4px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: #6b7280;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s;
+}
+
+.add-menu-cancel:hover {
+  background-color: #f3f4f6;
+}
